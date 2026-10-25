@@ -1,0 +1,58 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ai-code-security-scanner"
+version = "0.1.0"
+description = "Find security risks in Python and JavaScript code. Understand the findings. Fix them."
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+authors = [
+    {name = "Muhammad Hamid", email = "mhamidlad@users.noreply.github.com"},
+]
+keywords = ["security", "sast", "static-analysis", "code-security", "ai-code", "vulnerability-detection"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Security",
+    "Topic :: Software Development :: Quality Assurance",
+]
+dependencies = [
+    "typer>=0.9.0",
+    "rich>=13.0.0",
+    "pydantic>=2.0.0",
+    "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "pytest-mock>=3.10",
+]
+
+[project.urls]
+Homepage = "https://github.com/mhamidlad/ai-code-security-scanner"
+Issues = "https://github.com/mhamidlad/ai-code-security-scanner/issues"
+Documentation = "https://github.com/mhamidlad/ai-code-security-scanner#readme"
+
+[project.scripts]
+ai-scan = "ai_scanner.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v --tb=short"

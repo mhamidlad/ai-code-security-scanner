@@ -1,0 +1,58 @@
+name: Code Security
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  bandit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Bandit
+        run: pip install bandit
+
+      - name: Run Bandit
+        run: |
+          bandit -r src/ -f sarif -o bandit-results.sarif || true
+
+      - name: Upload Bandit results
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: bandit-results.sarif
+          category: bandit
+
+  self-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install
+        run: pip install -e ".[dev]"
+
+      - name: Run scanner on self
+        run: |
+          ai-scan scan ./src --format sarif --output self-scan-results.sarif || true
+
+      - name: Upload scanner results
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: self-scan-results.sarif
+          category: ai-code-security-scanner
