@@ -198,8 +198,8 @@ _register(PythonRule(
     impact="Remote code execution, arbitrary code execution on the server.",
     remediation=(
         "Never deserialize untrusted data with pickle. Use json.loads() for "
-        "untrusted input. For YAML, use yaml.safe_load() instead of yaml.load(). "
-        "Never use eval() or exec() on untrusted input."
+        "untrusted input. For YAML, use yaml.safe_load instead of the unsafe loader. "
+        "Never use dynamic evaluation functions on untrusted input."
     ),
     references=[
         "https://docs.python.org/3/library/pickle.html#module-pickle",
