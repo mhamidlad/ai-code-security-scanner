@@ -29,7 +29,7 @@ jobs:
           bandit -r src/ -f sarif -o bandit-results.sarif || true
 
       - name: Upload Bandit results
-        uses: github/codeql-action/upload-sarif@v3
+        uses: github/codeql-action/upload-sarif@v4
         with:
           sarif_file: bandit-results.sarif
           category: bandit
@@ -52,7 +52,7 @@ jobs:
           ai-scan scan ./src --format sarif --output self-scan-results.sarif || true
 
       - name: Upload scanner results
-        uses: github/codeql-action/upload-sarif@v3
+        uses: github/codeql-action/upload-sarif@v4
         with:
           sarif_file: self-scan-results.sarif
           category: ai-code-security-scanner
