@@ -1,5 +1,11 @@
 # AI Code Security Scanner
 
+[![CI](https://github.com/mhamidlad/ai-code-security-scanner/actions/workflows/ci.yml/badge.svg)](https://github.com/mhamidlad/ai-code-security-scanner/actions/workflows/ci.yml)
+[![Code Security](https://github.com/mhamidlad/ai-code-security-scanner/actions/workflows/security.yml/badge.svg)](https://github.com/mhamidlad/ai-code-security-scanner/actions/workflows/security.yml)
+[![Python 3.9+](https://img.shields.io/badge/python-3.9%20%7C%203.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-blue.svg)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Tests: 90 Passing](https://img.shields.io/badge/tests-90%20passing-brightgreen.svg)](tests/)
+
 > **AI writes code. I help make that code secure.**
 
 A static analysis tool for identifying common security vulnerabilities in Python and JavaScript code. Built for developers using AI coding assistants who need to verify the security of generated code.

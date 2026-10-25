@@ -22,7 +22,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install Bandit
-        run: pip install bandit
+        run: pip install "bandit[sarif]"
 
       - name: Run Bandit
         run: |
